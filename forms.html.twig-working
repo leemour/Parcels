@@ -1,0 +1,83 @@
+{# Переопределяем виджеты форм из стандартных Twig Bridge #}
+{% block form_label %}
+    {% spaceless %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain)~':' }}</label>
+    {% endspaceless %}
+{% endblock form_label %}
+
+{% block form_widget_simple %}
+    {% spaceless %}
+        {% set type         = type|default('text') %}
+        {% set value        = value|default('') %}
+        {% set maxlength    = maxlength|default(20) %}
+        <input type="{{ type }}" {{ block('widget_attributes') }} value="" size="{{ maxlength }}" />
+    {% endspaceless %}
+{% endblock form_widget_simple %}
+
+{% block textarea_widget %}
+    {% set value    = value|default('') %}
+    {% spaceless %}
+        <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    {% endspaceless %}
+{% endblock textarea_widget %}
+
+{# Макросы #}
+{% macro input_item(name, form, class, type, value, maxlength) %}
+    {% if class is not empty %}
+        {% set class = ' class="' ~ class ~ '"' %}
+    {% else %}
+        {% set class = '' %}
+    {% endif %}
+    
+    <li{{ class }}>
+        {{ form_label(attribute(form, name), attribute(form.vars.value, name)) }}
+        {{ form_errors(attribute(form, name)) }}
+        {{ form_widget(attribute(form, name)) }}
+    </li>
+{% endmacro %}
+
+
+
+{% macro double_item(name, name2, form, class, type, value, maxlength) %}
+    {% if class is not empty %}
+        {% set class = ' class="' ~ class ~ '"' %}
+    {% else %}
+        {% set class = '' %}
+    {% endif %}
+    
+    <li{{ class }}>
+        <div class="left">
+            {{ form_label(attribute(form, name), attribute(form.vars.value, name)) }}
+            {{ form_errors(attribute(form, name)) }}
+            {{ form_widget(attribute(form, name)) }}
+        </div>
+        <div class="left">
+            {{ form_label(attribute(form, name2), attribute(form.vars.value, name2)) }}
+            {{ form_errors(attribute(form, name2)) }}
+            {{ form_widget(attribute(form, name2)) }}
+        </div>
+    </li>
+{% endmacro %}
+
+{% macro textarea_item(name, form, class, type, value, maxlength) %}
+    {% if class is not empty %}
+        {% set class = ' class=' ~ class %}
+    {% else %}
+        {% set class = '' %}
+    {% endif %}
+    
+    <li{{ class }}>
+        {{ form_label(attribute(form, name), attribute(form.vars.value, name)) }}
+        {{ form_errors(attribute(form, name)) }}
+        <textarea name="{{ 'form_' ~ name }}" id="{{ 'form_' ~ name }}"  value="{{ value|e }}" maxlength="{{ maxlength|default(255) }}"></textarea>
+    </li>
+{% endmacro %}

@@ -1,0 +1,95 @@
+{% block services %}
+    <div id="services" class="wide">
+        <ul class="services-list navigation">
+            <li>
+                <a class="commercial-delivery" href="{{ locale.uri }}/commercial-parcels">
+                    <span>{{ 'Доставка коммерческих посылок'|trans }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="payment" href="{{ locale.uri }}/payment">
+                    <span>{{ 'Оплата поставщику и прием оплаты'|trans }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="customs" href="{{ locale.uri }}/customs">
+                    <span>{{ 'Таможенное оформление груза'|trans }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="import" href="{{ locale.uri }}/import">
+                    <span>{{ 'Доставка в любую точку России'|trans }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="export" href="{{ locale.uri }}/export">
+                    <span>{{ 'Экспорт в любую точку мира'|trans }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="international" href="{{ locale.uri }}/payment#receiver">
+                    <span>{{ 'Международная доставка за счет получателя'|trans }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="container" href="{{ locale.uri }}/container">
+                    <span>{{ 'Сборные грузы и контейнерные перевозки'|trans }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="distribution" href="{{ locale.uri }}/distribution">
+                    <span>{{ 'Рассылка посылок по адресам в России и за рубежом'|trans }}</span>
+                </a>
+            </li>
+        </ul><!-- .services-list -->
+    </div><!-- #services -->
+{% endblock %}
+
+{% block stages %}
+    <div id="stages" class="wide">
+        <h3 class="center">{{ 'Этапы сотрудничества'|trans }}</h3>
+        <ul class="stages-list navigation">
+            <li class="stage-1">
+                <div href="{{ locale.uri }}/stages#stage-1" class="stage-number"><span>1</span></div>
+                <div>
+                    {{ 'Вы сообщаете нам:'|trans }}
+                    <ul>
+                        <li>{{ 'характеристики груза'|trans }}</li>
+                        <li>{{ 'список услуг'|trans }}</li>
+                        <li>{{ 'город отправления'|trans }}</li>
+                        <li>{{ 'адрес доставки'|trans }}</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="stage-2">
+                <div href="{{ locale.uri }}/stages#stage-2" class="stage-number"><span>2</span></div>
+                <div>
+                    {{ 'Мы тарифицируем перевозку и предоставляем адрес для отправки.'|trans }}
+                </div>
+            </li>
+            <li class="stage-3">
+                <div href="{{ locale.uri }}/stages#stage-3" class="stage-number"><span>3</span></div>
+                <div>
+                    {{ 'Вы сообщаете наш адрес отправителю и покупаете товар.'|trans }}
+                </div>
+                <div>
+                    {{ 'Или мы покупаем товар для Вас.'|trans }}
+                </div>
+            </li>
+            <li class="stage-4">
+                <div href="{{ locale.uri }}/stages#stage-4" class="stage-number"><span>4</span></div>
+                <div>
+                    {{ 'Мы получаем груз, везем его на таможню и осуществляем таможенное оформление груза.'|trans }}
+                </div>
+            </li>
+            <li class="stage-5">
+                <div href="{{ locale.uri }}/stages#stage-5" class="stage-number"><span>5</span></div>
+                <div>
+                    {{ 'Мы доставляем груз до Вашей двери или склада транспортной компании.'|trans }}
+                </div>
+            </li>
+            <li class="border border-left"></li>
+            <li class="border border-right"></li>
+        </ul><!-- .stages-list -->
+    </div><!-- #stages -->
+{% endblock %}

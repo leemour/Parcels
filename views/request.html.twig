@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <div id="main-content">
+        {% if true %}
+            <h2>{{ 'Ошибка отправки запроса'|trans }}</h2>
+            <p>
+                {{ 'К сожалению, при отправке запроса возникли проблемы:'|trans }}
+            </p>
+            <ul class="error">
+                {% for err in error %}
+                    <li>{{ err }}</li>
+                {% endfor %}
+                {{ form_errors(form) }}
+            </ul>
+            <p>
+                {{ 'Попробуйте еще раз:'|trans }}
+            </p>
+            {% include 'form_main.html.twig' %}
+        {% else %}    
+            <h2>{{ 'Запрос получен'|trans }}</h2>
+            <p>
+                {{ 'Поздравляем! Мы успешно получили Вашу заявку и обработаем ее в ближайшее время. <strong>Совсем скоро</strong> мы свяжемся с Вами!'|trans|raw }}
+            </p>
+            
+            <h3>{{ 'Спасибо'|trans }}</h3>
+            <p class="hint">
+                {{ 'Если Вы не получили ответа на Вашу заявку в течение 24 часов, пожалуйста напишите нам по адресу <a href="mailto:support@parcels.su">support@parcels.ru</a>'|trans|raw }}
+            </p>
+        {% endif %}
+    </div><!-- #main-content -->
+{% endblock %}

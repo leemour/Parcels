@@ -1,0 +1,45 @@
+{% form_theme form 'forms.html.twig' %}
+{% import 'forms.html.twig' as forms %}
+
+{% block form %}
+    <form id="request-form" class="new" action="{{ locale.uri }}/request" method="post">
+        <div class="border border-right"></div>
+        <div class="border border-top"></div>
+        <div class="border border-left"></div>
+        <div class="border border-bottom"></div>
+        <div class="form-block">
+            <h4 class="freight">{{ 'Груз'|trans }}</h4>
+            <ul>    
+                {{ forms.textarea_item('description', form, 'textarea-2') }}
+                {{ forms.input_item('value', form) }}
+                {{ forms.textarea_item('boxes', form, 'textarea-4') }}
+                {{ forms.input_item('weight', form) }}
+                {{ forms.input_item('volume', form) }}
+            </ul>
+        </div><!-- .form-block -->
+        <div class="form-block">
+            <h4 class="conditions">{{ 'Условия доставки'|trans }}</h4>
+            <ul>
+                {{ forms.input_item('origin', form) }}
+                {{ forms.input_item('destination', form) }}
+                {{ forms.textarea_item('services', form, 'textarea-1') }}
+            </ul>
+        </div><!-- .form-block -->
+        <div class="form-block">
+            <h4 class="contact-info">{{ 'Контактная информация'|trans }}</h4>
+            <ul>
+                {{ forms.input_item('name', form) }}
+                {{ forms.input_item('email', form) }}
+                {{ forms.input_item('tel', form) }}
+            </ul>
+        </div><!-- .form-block -->
+        {{ form_widget(form._token) }}
+        <input id="form_submit" class="button" type="submit" value="{{ 'Отправить запрос'|trans }}" name="form_submit" />
+    </form>
+{% endblock %}
+
+{# НЕ используется #}
+{% macro form2_field(name, form, type, value, size) %}
+    {{ form_label(attribute (form, name), form.vars.value.name) }}
+    <input type="{{ type|default('text') }}" name="{{ 'form_' ~ name }}" id="{{ 'form_' ~ name }}"  value="{{ value|e }}" size="{{ size|default(20) }}" />
+{% endmacro %}

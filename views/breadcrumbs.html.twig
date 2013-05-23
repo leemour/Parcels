@@ -1,0 +1,14 @@
+{% block root %}
+    {%- for item in options.page.getBreadcrumbsArray() %}
+        {%- if loop.index == 1 %}
+            <a href="/">{{ 'Главная' |trans }}</a>
+        {% else %}
+            >
+            {%- if not loop.last %}
+                <a href="{{ item.uri }}">{{ item.label | trans }}</a>
+            {%- else %}
+                <span>{{ item.label | trans }}</span>
+            {%- endif %}
+        {% endif %}
+    {%- endfor %}
+{% endblock %}

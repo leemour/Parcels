@@ -1,0 +1,21 @@
+{% form_theme form 'forms.html.twig' %}
+{% import 'forms.html.twig' as forms %}
+
+{% block form %}
+    <form id="request-form" method="post" action="{{ locale.uri }}/request">
+        <ul>    
+            {{ forms.input_item('description', form) }}
+            {{ forms.input_item('value', form) }}
+            {{ forms.input_item('boxes', form) }}
+            {{ forms.double_item('weight', 'volume', form) }}
+            {{ forms.input_item('origin', form) }}
+            {{ forms.input_item('destination', form) }}
+            {{ forms.input_item('services', form) }}
+            {{ forms.input_item('name', form) }}
+            {{ forms.input_item('email', form) }}
+            {{ forms.input_item('tel', form) }}
+        </ul>
+        {{ form_widget(form._token) }}
+        <input id="form_submit" class="button" type="submit" value="{{ 'Отправить запрос'|trans }}" name="form_submit" />
+    </form>
+{% endblock %}

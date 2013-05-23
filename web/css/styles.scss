@@ -1,0 +1,1103 @@
+@font-face {
+    font-family: 'SansusWebissimoItalic';
+    src: url('/fonts/Sansus/sansus-webissimo-italic-webfont.eot');
+    src: url('/fonts/Sansus/sansus-webissimo-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Sansus/sansus-webissimo-italic-webfont.woff') format('woff'),
+         url('/fonts/Sansus/sansus-webissimo-italic-webfont.ttf') format('truetype'),
+         url('/fonts/Sansus/sansus-webissimo-italic-webfont.svg#SansusWebissimoItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	outline: 0;
+	font-weight: normal;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: #000;
+	font: 13px Tahoma, Geneva, sans-serif;
+	width: 100%;
+	text-align: left;
+}
+ol, ul {
+	list-style: none;
+	text-align: left;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+/* END RESET */
+
+/* =GENERAL
+-----------------------------------------------------------------------------*/
+
+$full-width: 960px;
+$images: '/images';
+$flag-height: 17px;
+$flag-offset: 14px;
+$background-color: #4992b4;
+$content-color: #333;
+$bold-color: #464646;
+$link-color: #1181ab;
+$hover-link-color: #ac1e25;
+$content-link-color: #499bba;
+$visited-link-color: #7c4f93;
+$text-shadow-color: #12577e;
+$heading-color: #000;
+$main-border-color: #eae5dc;
+$second-border-color: #b7c9cf;
+$lighter-grey: #ccccca;
+$light-grey: #A4A4A4;
+$mid-grey: #888;
+$dark-grey: #606060;
+$error-color: #b62121;
+
+$features-padding: 6px;
+$service-height: 58px;
+$service-width: 130px;
+
+$request-input-width: 210px;
+
+@mixin main-font {
+    font-family: 'PlayBold', sans-serif;
+}
+
+@mixin second-font {
+    font-family: 'SansusWebissimoItalic', sans-serif;
+    letter-spacing: 0.1pt;
+}
+
+@mixin rounded($side: '', $radius: 10px) {
+    border#{$side}-radius: $radius;
+    -moz-border-radius#{$side}: $radius;
+    -webkit-border#{$side}-radius: $radius;
+	behavior: url(/css/PIE.php);
+}
+
+@mixin text-shadow($color: rgba(0, 0, 0, 0.4), $h-offset: 0, $v-offset: 0, $radius: 0) {
+    text-shadow: #{$color} #{$h-offset} #{$v-offset} #{$radius};
+}
+
+@mixin box-shadow($h-offset: 0, $v-offset: 0, $blur: 0, $spread: 0, $color: #555555, $inset: '') {
+    box-shadow: #{$h-offset} #{$v-offset} #{$blur} #{$spread} #{$color} #{$inset};
+	behavior: url(/css/PIE.php);
+}
+
+@mixin bg-opacity($opacity: 0.7) {
+    /* RGBa with 0.6 opacity */
+    background-color: rgba(0, 0, 0, $opacity);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000)";
+}
+
+@mixin bg-opacity-hover($opacity: 1) {
+    opacity: $opacity;
+    /* RGBa with 0.6 opacity */
+    background-color: rgba(0, 0, 0, $opacity);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF000000, endColorstr=#FF000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF000000, endColorstr=#FF000000)";
+}
+
+@mixin bg-gradient ($from-color: #FFF, $to-color: #000) {
+    background: -webkit-gradient(linear, left top, left bottom, from(#{$from-color}), to(#{$to-color}));
+    background: -moz-linear-gradient(top,  #{$from-color}, #{$to-color});
+}
+
+html {
+    background: url('#{$images}/bg.gif') repeat;
+}
+
+body {
+    background: url('#{$images}/service-bg.png') 0 175px repeat-x;
+    min-width: 970px;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.wide {
+    clear: both;
+    margin: 0 auto;
+    width: $full-width;
+}
+
+.page {
+    margin-top: 20px;
+}
+
+.page #main-content {
+    min-height: 300px;
+}
+
+#content .hint {
+    color: $dark-grey;
+    font-size: 90%;
+    margin-top: 5px;
+}
+
+a {
+    color: $link-color;
+    &:hover {
+        color: $hover-link-color;
+        text-decoration: none;
+    }
+}
+
+h2, h3 {
+    @include main-font;
+    color: $heading-color;
+    font-size: 22px;
+    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+}
+
+h3 {
+    font-size: 18px;
+    margin: 12px 0 5px;
+}
+
+strong, b {
+    font-weight: bold;
+}
+
+em, i {
+    font-style: italic;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.inner-header {
+    margin-top: 0;
+}
+
+.width-100 {
+    overflow: hidden;
+    width: 100%;
+}
+
+.error {
+	color: $error_color;
+}
+
+/* =HEADER
+-----------------------------------------------------------------------------*/
+
+#header {
+    @include box-shadow(0, 0, 1px, 0, #dedede);
+    background: url('#{$images}/top-bg.gif') repeat;
+    border-bottom: 1px solid $lighter-grey;
+    height: 135px;
+    min-width: 100%;
+    padding-top: 13px;
+}
+
+h1 a {
+    background: url('#{$images}/logo.png') 0 0 no-repeat;
+    display: block;
+    float: left;
+    height: 71px;
+    margin-top: 3px;
+    text-indent: -9999px;
+    width: 222px;
+}
+
+#header img {
+    float: left;
+    margin: -8px 0 0 70px;
+}
+
+.header-contacts {
+    float: right;
+    .lang {
+        background: url('#{$images}/sprites.png') 0 3px no-repeat;
+		/*display: none;*/
+        padding-left: 20px;
+        &.active {
+            color: $mid-grey;
+            text-decoration: none;
+        }
+    }
+    .lang-eng {
+        background-position: 0 0 * $flag-height - $flag-offset;
+        margin-left: 13px;
+    }
+    .tel {
+		font-family: 'PlayBold', sans-serif;
+		font-size: 19px;
+        padding: 8px 8px 6px 0;
+    }
+    .contact-box {
+        @include rounded('', 4px);
+        @include box-shadow(1px, 1px, 0, 0, #bebebe);
+        background-color: #f9f6f0;
+        border: 1px solid $lighter-grey;
+        font-size: 14px;
+        line-height: 0.8;
+        padding: 8px 8px 12px;
+        a {
+            background: url('#{$images}/sprites.png') 0 -6 * $flag-height - $flag-offset no-repeat;
+            padding-left: 20px;
+        }
+    }
+}
+
+.navigation li {
+    float: left;
+    a {
+        display: block;
+        float: left;
+    }
+}
+
+#navigation-main {
+    @include rounded('', 10px);
+    @include box-shadow(0, 2px, 0, 0, #bebebe);
+    background-color: $background-color;
+    bottom: -25px;
+    clear: both;
+    height: 50px;
+    padding: 0 0 0 20px;
+    position: relative;
+    li {
+        a {
+            @include main-font;
+			@include text-shadow($text-shadow-color, 1px, 1px, 1px);
+            color: #FFF;
+            font-size: 16px;
+			font-weight: bold;
+            height: 33px;
+            padding: 16px 10px 0;
+            text-decoration: none;
+            vertical-align: middle;
+            &:hover,
+            &.current {
+                background: url('#{$images}/navigation-bg.gif') repeat;
+                /*border-bottom: 2px solid #c30000;*/
+            }
+        }
+    }
+}
+
+/* =FEATURES
+-----------------------------------------------------------------------------*/
+
+#features {
+    @include box-shadow(0, 1px, 2px, 0, #AAAAAA);
+    margin-top: 45px;
+    background: url('#{$images}/mail-h-bg.png') 0 0 repeat;
+    height: 65px;
+    padding: $features-padding 0;
+    position: relative;
+    width: $full-width - ($features-padding * 2);
+    .features-list {
+        background:  url('#{$images}/globe-bg.jpg') 60px 0 no-repeat;
+        margin-left: -55px;
+        height: 46px;
+		overflow: hidden;
+        padding: 10px 12px;
+        li {
+			height: 44px;
+			overflow: hidden;
+			position: relative;
+			a {
+				@include second-font;
+				@include bg-opacity;
+				@include box-shadow(0, 1px, 2px, 0, rgba(0,0,0,0.5));
+				color: #a7d9ec;
+				display: block;
+				float: left;
+				font-size: 15px;
+				margin-left: 80px;
+				padding: 3px 7px 5px;
+				text-decoration: none;
+				&:hover {
+					@include bg-opacity-hover;
+					color: #87daf5;
+				}
+			}
+        }
+    }
+    .border {
+        background: url('#{$images}/mail-v-bg.gif') 0 -5px repeat;
+        height: 100%;
+        left: 0;
+        height: 70px;
+        position: absolute;
+        width: 6px;
+        &.border-right {
+            background-position: 0 -35px;
+            left: auto;
+            right: 0;
+        }
+    }
+}
+
+/* =SERVICES
+-----------------------------------------------------------------------------*/
+
+#services {
+    height: 150px;
+    margin-top: 20px;
+    .services-list {
+        margin-left: -30px;
+        li a {
+            background: url('#{$images}/services.png') 0 0 no-repeat;
+            color: #000;
+            font-size: 15px;
+            height: $service-height;
+            line-height: 0.9;
+            margin: 0 0 15px 30px;
+            padding-left: 80px;
+            text-decoration: none;
+            width: $service-width;
+           /* &:hover {
+                color: $hover-link-color;
+            }*/
+            span {
+                /*@include main-font;*/
+                font-family: 'Play', sans-serif;
+                /*@include text-shadow(rgba(0, 0, 0, 0.5), 0, 0, 1px);*/
+                display: block;
+                padding-top: 10px;
+            }
+        }
+        .payment {
+            background-position: 0 -1 * $service-height;
+            margin-left: 20px;
+        }
+        .customs {
+            background-position: 0 -2 * $service-height;
+        }
+        .import {
+            background-position: 0 -3 * $service-height;
+        }
+        .export {
+            background-position: 0 -4 * $service-height;
+        }
+        .international {
+            background-position: 0 -5 * $service-height;
+            margin-left: 20px;
+        }
+        .container {
+            background-position: 0 -6 * $service-height;
+            height: $service-height + 3;
+            position: relative;
+            top: -3px;
+            span {
+                padding-top: 13px;
+            }
+        }
+        .distribution {
+            background-position: 0 -7 * $service-height - 3;
+            width: $service-width + 35px;
+        }
+    }
+}
+
+/* =STAGES
+-----------------------------------------------------------------------------*/
+
+#stages {
+    margin-top: 5px;
+    overflow: hidden;
+    h3 {
+        @include rounded('', 6px);
+        @include box-shadow(1px, 1px, 0, 0, #ecfafb);
+        @include text-shadow(#5396af, 1px, 1px, 0);
+        background-color: #b6d4df;
+        border: 1px solid #91b3bf;
+        border-right-color: #b9d1db;
+        border-bottom-color: #b9d1db;
+        color: #FFF;
+        font-size: 17px;
+        margin: 0 auto;
+        padding: 4px 0 7px;
+		position: relative;
+        text-align: center;
+        width: 280px;
+    }
+    .stages-list {
+        padding: 0 22px;
+        position: relative;
+        li {
+            width: 177px;
+            margin: 10px 3px 0;
+            .stage-number {
+                background: url('#{$images}/stages.png') 0 0 no-repeat;
+                height: 50px;
+				padding: 0 !important;
+                text-align: center;
+                width: 177px;
+                span {
+                    background: url('#{$images}/stages.png') 2px -100px no-repeat;
+                    display: block;
+                    height: 18px;
+                    margin: 15px auto;
+                    text-indent: -9999px;
+                    width: 13px;
+                }
+                &:hover {
+                    background-position: 0 -50px;
+                }
+            }
+            &.stage-2 .stage-number span {
+                background-position: -18px -100px;
+            }
+            &.stage-3 .stage-number span {
+                background-position: -38px -100px;
+            }
+            &.stage-4 .stage-number span {
+                background-position: -58px -100px;
+            }
+            &.stage-5 .stage-number span {
+                background-position: -77px -100px;
+                width: 15px;
+            }
+            div {
+                overflow: hidden;
+                padding: 5px 10px;
+                ul li {
+                    list-style: disc inside;
+                    margin: 0;
+                    width: auto;
+                }
+            }
+        }
+        .border {
+            background: url('#{$images}/stages.png') -100px -100px no-repeat;
+            height: 17px;
+            left: 25px;
+            margin: 0;
+            position: absolute;
+            top: 25px;
+            width: 6px;
+            z-index: 99;
+            &.border-right {
+                background-position: -106px -100px;
+                left: auto;
+                right: 25px;
+            }
+        }
+    }
+}
+
+
+/* =MAIN-CONTENT
+-----------------------------------------------------------------------------*/
+
+#content {
+    color: $content-color;
+    margin-top: 10px;
+    p {
+        margin: 0 0 10px;
+    }
+	h2 {
+		margin-bottom: 4px;
+	}
+    h2 a, h3 a {
+        color: $heading-color;
+        font-weight: inherit;
+        text-decoration: none;
+        &:hover,
+        &:visited {
+            color: $heading-color;
+        }
+        &[href]:hover {
+            color: $hover-link-color;
+        }
+    }
+    h3, h3 a {
+        font-size: 17px;
+    }
+    h4 {
+        font-weight: bold;
+    }
+    a {
+        color: $content-link-color;
+        &:visited {
+            color: $visited-link-color;
+        }
+        &:hover {
+            color: $hover-link-color;
+        }
+    }
+    strong, b {
+        color: $bold-color;
+    }
+}
+
+#breadcrumbs {
+    @include rounded('', 4px);
+    background-color: #FFF;
+    border: 1px solid $second-border-color;
+    margin-left: 288px;
+    overflow: hidden;
+    padding: 6px 15px 10px;
+	position: relative;
+    width: 640px;
+    .breadcrumb-link {
+        background: url('#{$images}/sprites.png') right -134px no-repeat;
+        color: $content-color !important;
+        display: block;
+        float: left;
+        padding-right: 19px;
+    }
+    .breadcrumb-current {
+        color: $mid-grey;
+    }
+}
+
+#geography {
+    @include rounded('', 4px);
+    @include box-shadow(-1px, -1px, 0, 0, #fbf9f5, inset);
+    @include bg-gradient(#f4ede3,  #f9f6f0);
+	background-color: #f4ede3;
+    border: 1px solid $main-border-color;
+    margin-left: 288px;
+    overflow: hidden;
+    padding: 12px 15px 15px;
+	position: relative;
+    width: 640px;
+    h3 {
+        margin: 0 0 5px;
+        a {
+            font-size: 21px;
+            &:hover {
+                color: $hover-link-color;
+            }
+        }
+    }
+    h4 {
+        @include main-font;
+        color: $dark-grey;
+        font-size: 18px;
+        font-weight: normal;
+    }
+    #continents {
+        margin: 0 -30px;
+    }
+    .continent {
+        border-left: 1px solid #FFF;
+        border-right: 1px solid #e5dbc6;
+        float: left;
+        padding: 0 30px;
+        &.europe {
+            border-right: 0 none;
+            padding-right: 0;
+        }
+        .country {
+            background: url('#{$images}/sprites.png') 0 -1 * $flag-height - $flag-offset no-repeat;
+            color: #000;
+            float: left;
+            margin: 5px 15px 2px 0;
+            padding-left: 20px;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+            &.ch {
+                margin-right: 0;
+            }
+            &.us {
+                background-position: 0 -2 * $flag-height - $flag-offset;
+            }
+            &.de {
+                background-position: 0 -3 * $flag-height - $flag-offset;
+            }
+            &.tu {
+                background-position: 0 -4 * $flag-height - $flag-offset;
+            }
+            &.it {
+                background-position: 0 -5 * $flag-height - $flag-offset;
+            }
+            &.uk {
+                background-position: 0 0 * $flag-height - $flag-offset;
+            }
+        }
+        .others {
+            clear: both;
+            color: $light-grey;
+            display: block;
+            float: left;
+            &:hover {
+                color: $hover-link-color;
+            }
+        }
+    }
+}
+
+#main-content {
+    @include rounded('', 4px);
+    background-color: #FFF;
+    border: 1px solid $main-border-color;
+    line-height: 1.5;
+    margin: 15px 0 0 288px;
+    padding: 15px;
+	position: relative;
+    width: 640px;
+    img {
+        margin: 5px 0 10px;
+    }
+    ol, ul {
+        margin-bottom: 10px;
+    }
+    ol {
+        list-style: decimal inside;
+        padding-left: 20px;
+    }
+    ul {
+        list-style: disc inside;
+        padding-left: 15px;
+        &.ticks {
+            list-style: outside none;
+			li {
+				background: url('#{$images}/stages.png') -220px 5px no-repeat;
+				margin-top: 2px;
+				padding-left: 20px;
+			}
+        }
+    }
+}
+
+/* =SPECIAL CONTENT
+-----------------------------------------------------------------------------*/
+
+/* =404
+------------------*/
+img.error-404 {
+    float: left;
+    padding: 20px 30px 20px 0;
+}
+
+/* =OTHER
+------------------*/
+
+.page ul.left {
+    width: 45%;
+}
+
+
+/* =REQUEST
+------------------*/
+
+#main-content ul.error {
+	padding-left: 0;
+	li {
+		background-color: lighten($error-color, 55%);
+		border: 1px dashed $error-color;
+		color: $content-color;
+		list-style: outside none;
+		margin-bottom: 5px;
+		padding: 2px 15px 4px;
+	}
+}
+
+li.error {
+	& textarea,
+	& input {
+		border: 2px solid $error-color !important;
+		margin: 1px 0 !important;
+	}
+}
+
+input.error {
+	border: 2px solid $error-color;
+}
+
+/* =CONTACTS
+------------------*/
+#main-content #request-form {
+    @include rounded('', 4px);
+    background-color: #e9f3f6;
+    border: 1px solid $second-border-color;
+    overflow: hidden;
+    padding: 21px 10px;
+    position: relative;
+    .border {
+        background: url('#{$images}/mail-h-bg.png') 0 0 repeat-x;
+        height: 6px;
+        left: -5px;
+        position: absolute;
+        width: 650px;
+        &.border-left, &.border-right {
+            background: url('#{$images}/mail-v-bg2.png') 0 5px repeat-y;
+            height: 510px;
+            top: -10px;
+            width: 6px;
+        }
+        &.border-top {
+            top: 0;
+        }
+        &.border-right {
+            background-position: 0 41px;
+            left: auto;
+            right: 0;
+        }
+        &.border-bottom {
+            background-position: -2px 0;
+            bottom: 0;
+        }
+        &.border-left {
+            left: 0;
+        }
+    }
+    .form-block {
+        float: left;
+        min-height: 190px;
+        padding: 0 15px 4px;
+        width: 270px;
+    }
+    label {
+        margin-left: 1px;
+    }
+    #form_description {
+        height: 60px;
+    }
+    #form_boxes {
+        height: 87px;
+    }
+    #form_services {
+    height: 50px;
+    }
+    ul {
+        list-style-type: none;
+        float: left;
+		margin-bottom: 0;
+        padding: 2px 0 0;
+        li {
+            height: 53px;
+            margin-bottom: 3px;
+            &.textarea-1 {
+                height: 84px;
+            }
+            &.textarea-2 {
+                height: 95px;
+            }
+            &.textarea-4 {
+                height: 122px;
+            }
+        }
+        input, textarea {
+            @include rounded('', 2px);
+            border: 1px solid lighten($lighter-grey, 7%);
+            border-top-color: $lighter-grey;
+            height: 18px;
+            margin: 2px 1px;
+            padding: 4px 5px 5px;
+			position: relative;
+            width: 100%;
+            &:focus {
+                border: 2px solid #68a5c2;
+                margin: 1px 0;
+            }
+        }
+    }
+    h4 {
+        background: url('#{$images}/sprites.png') 0 -150px no-repeat;
+        float: left;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.3;
+        padding-left: 27px;
+        width: 270px;
+        &.conditions {
+            background-position: 0 -171px;
+            padding-top: 1px;
+            margin-top: -1px;
+        }
+        &.contact-info {
+            background-position: 0 -193px;
+        }
+    }
+    #form_submit {
+        background: url('#{$images}/stages.png') 0 -336px no-repeat;
+        border: 0 none;
+        cursor: pointer;
+        height: 34px;
+        margin: 5px 0 0 15px;
+        text-indent: -9999px;
+        width: 230px;
+        &:hover {
+            background-position: 0 -370px;
+        }
+    }
+}
+
+/* =SIDEBAR
+-----------------------------------------------------------------------------*/
+
+#sidebar {
+    float: left;
+    width: 260px;
+}
+
+.widget {
+    @include rounded('', 8px);
+    border: 1px solid $main-border-color;
+    border-top-color: #3c849f;
+    margin-bottom: 15px;
+    overflow: hidden;
+	position: relative;
+    h3 {
+        @include text-shadow($text-shadow-color, 1px, 1px, 1px);
+        @include rounded('-top-left', 5px);
+        @include rounded('-top-right', 5px);
+        background-color: $background-color;
+        border: 1px solid #3c849f;
+        border-top-color: #64bbd0;
+        color: #FFF;
+        font-size: 18px;
+        margin: 0 -1px;
+        padding: 4px 0 7px;
+		position: relative;
+        text-align: center;
+        a {
+            @include text-shadow($text-shadow-color, 1px, 1px, 1px);
+            color: #FFF;
+			font-weight: bold;
+			position: relative;
+            text-decoration: none;
+        }
+    }
+}
+
+.widget-content {
+    background-color: #FFF;
+    border-top: 1px solid $lighter-grey;
+    padding: 10px 10px 20px;
+}
+
+#services-widget {
+    border-color: $second-border-color;
+    border-bottom-color: $main-border-color;
+    overflow: visible;
+    h3 {
+        background: url('#{$images}/navigation-bg2.gif') repeat;
+        a {
+            background: none;
+        }
+    }
+    .widget-content {
+        @include rounded('-bottom-left', 8px);
+        @include rounded('-bottom-right', 8px);
+        border: 1px solid $main-border-color;
+        border-bottom: 0 none;
+        border-top-color: $lighter-grey;
+        margin: 0 -1px;
+        padding: 5px 0;
+		position: relative;
+    }
+    .services-list {
+        border-top: 1px solid #EFEFEF;
+        margin-bottom: 10px;
+		ul li a {
+			font-size: 14px;
+			padding-left: 35px;
+		}
+    }
+    li a {
+        @include main-font;
+        @include bg-gradient(#f8f8f8, #fff);
+		background-color: #f8f8f8;
+        border-top: 1px solid #FFF;
+        border-bottom: 1px solid #EFEFEF;
+        color: #000;
+        display: block;
+        font-size: 15px;
+        height: 22px;
+        padding: 6px 0 0 20px;
+        text-decoration: none;
+        &:hover,
+        &.current {
+            @include bg-gradient(#e6e6e6, #efefef);
+			background-color: #e6e6e6;
+            color: #831212;
+        }
+    }
+}
+
+#request-widget {
+    background: url('#{$images}/mail-h-bg.png') -10px 0 no-repeat;
+    border-top-color: $main-border-color;
+    h3 {
+        @include box-shadow(0, 2px, 0, 0, $background-color);
+        @include text-shadow(#FFF, 0, 0, 0);
+        background: url('#{$images}/services.png') 35px -8 * $service-height - 1 no-repeat #FFF;
+        border: 0 none;
+        color: #00445d;
+        margin-top: 6px;
+        padding: 8px 0 8px 72px;
+        text-align: left;
+    }
+    .widget-content {
+        background-color: $background-color;
+        color: #FFF;
+        padding: 10px 17px;
+    }
+    li {
+        margin-bottom: 5px;
+		overflow: hidden;
+		.left {
+			font-size: 12px;
+		}
+    }
+    label {
+        display: block;
+        margin: 0 1px;
+    }
+    ul input {
+        @include rounded('', 3px);
+        background-color: #f1f7f9;
+        border: 1px solid $lighter-grey;
+        margin: 2px 1px;
+        padding: 3px 5px;
+		position: relative;
+        width: $request-input-width;
+        &:focus {
+            border: 2px solid $text-shadow-color;
+            margin: 1px 0;
+        }
+    }
+    #form_weight {
+        width: $request-input-width / 2 - 15;
+		margin-right: 7px;
+		&:focus {
+            margin: 1px 6px 1px 0;
+        }
+    }
+    #form_volume {
+        width: $request-input-width / 2 - 5;
+    }
+    #form_submit {
+        background: url('#{$images}/stages.png') 0 -118px no-repeat;
+        border: 0 none;
+        cursor: pointer;
+        height: 30px;
+        margin: 2px 1px;
+        text-indent: -9999px;
+        width: 222px;
+        &:hover {
+            background-position: 0 -148px;
+        }
+    }
+}
+
+#partners-widget {
+    .partners-img {
+        background: url('#{$images}/stages.png') 0 -178px no-repeat;
+        height: 335 - 178px;
+        margin: 10px;
+        width: 100%;
+    }
+}
+
+/* =FOOTER
+-----------------------------------------------------------------------------*/
+
+#footer {
+    @include box-shadow(0, -1px, 0, 0, #2a7090);
+    background-color: #5d9bb6;
+    border-top: 1px solid #b5d8e5;
+    clear: both;
+    margin-top: 40px;
+    overflow: hidden;
+    padding: 20px 0 40px;
+}
+
+.footer-column {
+    color: #FFF;
+    float: left;
+    margin: 0 80px 0 20px;
+    &.column-1 {
+        margin-right: 35px;
+        width: 240px;
+    }
+    &.column-3 {
+        margin-right: 20px;
+    }
+    &.column-4 {
+        float: right;
+        margin: 0;
+    }
+    a {
+        color: #FFF;
+    }
+    .liveinternet,
+    .rambler {
+        float: right;
+        margin-right: 8px;
+    }
+	.tel {
+		margin-top: 10px;
+	}
+    .contact-box {
+        @include rounded('', 4px);
+        background-color: $background-color;
+        border: 1px solid #29698d;
+        border-right-color: #96c4d5;
+        border-bottom-color: #96c4d5;
+        float: left;
+        line-height: 0.8;
+        margin-top: 10px;
+        padding: 4px 8px 9px;
+    }
+    .author {
+        background: url("#{$images}/riabit-logo.png") no-repeat right 1px transparent;
+        display: block;
+        height: 17px;
+        margin-bottom: 42px;
+        padding-right: 74px;
+        text-decoration: none;
+        .underline {
+            text-decoration: underline;
+        }
+        &:hover .underline {
+            text-decoration: inherit;
+        }
+        &:hover {
+            background-position: right -16px;
+        }
+    }
+}

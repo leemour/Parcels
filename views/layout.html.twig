@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU">
+
+{% include 'head.html.twig' %}
+
+<body>
+    {% block header %}
+        <div id="header">
+            <div class="wide">
+                <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter14201347 = new Ya.Metrika({id:14201347, enableAll: true, trackHash:true, webvisor:true}); } catch(e) {} }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/14201347" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+                <h1>
+                    <a href="{{ locale.uri? locale.uri: '/' }}" id="logo" class="text-image" title="{{ 'На главную'| trans }}">Parcels.su - {{ 'служба доставка коммерческих посылок'| trans }}</a>
+                </h1>
+                <img src="/images{{ locale.uri }}/banner-top2.png" alt="{{ 'Растаможка, импорт, экспорт бизнес посылок и грузов любого размера'| trans }}" class="delivery" />
+                <div class="header-contacts">
+                    <a href="{{ locale.ru.uri ~ page.uri }}" class="lang lang-rus {{ locale.ru.class }}">Русский</a>
+                    <a href="{{ locale.en.uri ~ page.uri  }}" class="lang lang-eng {{ locale.en.class }}">English</a>
+                    <div class="tel">
+                        (812) 320 40 20
+                    </div>
+                    <div class="contact-box">
+                        <a href="mailto:{{ email }}">{{ email }}</a>
+                    </div>
+                </div><!-- .header-contacts -->
+                {{ knp_menu_render('main', {'template': 'knp_menu.html.twig'}) }}
+            </div><!-- .wide -->
+        </div><!-- #header -->
+    {% endblock %}
+
+    {% block features %}
+        <div id="features" class="wide">
+            <div class="border border-left"></div>
+            <div class="border border-right"></div>
+            <ul class="features-list navigation">
+                <li>
+                    <a href="{{ locale.uri }}/delivery#size">
+                        {% trans %}
+                            Груз не бывает<br /> слишком маленьким!
+                        {% endtrans %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ locale.uri }}/payment">
+                        {% trans %}
+                            Гибкие схемы<br /> доставки и оплаты
+                        {% endtrans %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ locale.uri }}/delivery#warranty">
+                        {% trans %}
+                            Гарантии 100%<br /> инвойсной стоимости
+                        {% endtrans %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ locale.uri }}/distribution">
+                        {% trans %}
+                            Автоматическая отправка<br /> повторяющихся посылок
+                        {% endtrans %}
+                    </a>
+                </li>
+            </ul><!-- .features-list -->
+        </div><!-- #features -->
+    {% endblock %}
+
+    {% if page.slug == '/' %}
+        {% include 'stages-services.html.twig' %}
+    {% endif %}
+
+    {% block container %}
+        <div id="container" class="wide page">
+
+            {% include 'sidebar.html.twig' %}
+
+            <div id="content">
+
+                {% if page.slug == '/' %}
+                    {% block geography %}
+                        <div id="geography">
+                            <h3><a href="{{ locale.uri }}/geography">{{ 'География услуг'|trans }}</a></h3>
+                            <p> {% set locale_uri = locale.uri %}
+                                {% trans %}
+                                    Мы отправляем и доставляем посылки из <a href="%locale_uri%/geography">любой</a> страны мира. Вот самые популярные направления:
+                                {% endtrans %}
+                            </p>
+                            <div id="continents">
+                                <div class="continent asia">
+                                    <h4>{{ 'Азия'|trans }}</h4>
+                                    <a href="{{ locale.uri }}/geography/china" class="country ch">{{ 'Китай'|trans }}</a>
+                                    <a href="{{ locale.uri }}/geography#asia" class="others">{{ 'другие'|trans }}</a>
+                                </div>
+                                <div class="continent usa">
+                                    <h4>{{ 'Америка'|trans }}</h4>
+                                    <a href="{{ locale.uri }}/geography#usa" class="country us">{{ 'США'|trans }}</a>
+                                    <a href="{{ locale.uri }}/geography#america" class="others">{{ 'другие'|trans }}</a>
+                                </div>
+                                <div class="continent europe">
+                                    <h4>{{ 'Европа'|trans }}</h4>
+                                    <a href="{{ locale.uri }}/geography#germany" class="country de">{{ 'Германия'|trans }}</a>
+                                    <a href="{{ locale.uri }}/geography#turkey" class="country tu">{{ 'Турция'|trans }}</a>
+                                    <a href="{{ locale.uri }}/geography#italy" class="country it">{{ 'Италия'|trans }}</a>
+                                    <a href="{{ locale.uri }}/geography#uk" class="country uk">{{ 'Великобритания'|trans }}</a>
+                                    <a href="{{ locale.uri }}/geography#europe" class="others">{{ 'другие'|trans }}</a>
+                                </div>
+                            </div><!-- #continents -->
+                        </div><!-- #geography -->
+                    {% endblock %}
+                {% else %}
+                    {% block breadcrumbs %}
+                        <ul id="breadcrumbs">
+                            {% if page.parent is empty %}
+                                {{ knp_menu_render('breadcrumbs', {'template': 'breadcrumbs.html.twig', 'page': knp_menu_get('breadcrumbs', [page.slug])}) }}
+                            {% else %}
+                                {{ knp_menu_render('breadcrumbs', {'template': 'breadcrumbs.html.twig', 'page': knp_menu_get('breadcrumbs', [page.parent, page.slug])}) }}
+                            {% endif %}
+                        </ul>
+                    {% endblock %}
+                {% endif %}
+
+                {% block content %}
+                    <div id="main-content">
+                        <h2>{{ page.title|trans }}</h2>
+                        {% include page.content.main %}
+                    </div><!-- #main-content -->
+                {% endblock %}
+            </div><!-- #content -->
+        </div><!-- #container -->
+    {% endblock %}
+
+    {% include 'footer.html.twig' %}
+
+</body>
+</html>

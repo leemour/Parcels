@@ -1,0 +1,28 @@
+{% block sidebar %}
+    <div id="sidebar">
+        {% if ( page.slug != '/' ) %}
+            <div id="services-widget" class="widget">
+                <h3 class="widgettitle" title="{{ 'Перечень всех услуг'|trans }}">{{ 'Услуги'|trans }}</h3>
+                <div class="widget-content">
+                    {{ knp_menu_render('side') }}
+                </div><!-- .widget-content -->
+            </div><!-- #services-widget -->
+        {% endif %}
+        
+        {% if not (page.slug == 'contacts' or  page.slug == 'request') %}
+            <div id="request-widget" class="widget">
+                <h3 class="widgettitle">{{ 'Запросите нас'|trans }}</h3>
+                <div class="widget-content">
+                    {% include 'form_side.html.twig' %}
+                </div><!-- .widget-content -->
+            </div><!-- #request-widget -->
+        {% endif %}
+        
+        <div id="partners-widget" class="widget">
+            <h3 class="widgettitle">{{ 'Наши партнеры'|trans }}</h3>
+            <div class="widget-content">
+                <div class="partners-img">&nbsp;</div>
+            </div>
+        </div><!-- #partners-widget -->
+    </div><!-- #sidebar -->
+{% endblock %}

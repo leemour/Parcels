@@ -1,0 +1,67 @@
+<?php include_once('header.php'); ?>
+
+<div id="container" class="wide page">
+    
+    <?php include_once('sidebar.php'); ?>
+    
+    <div id="content">
+        <?php $errors = ''; ?>
+        <?php #var_dump($_SERVER); ?>
+        <?php #var_dump($_POST); ?>
+        <?php if ( !( $errors = process_requests() ) ) { ?>
+            <?php breadcrumbs(); ?>
+            
+            <div id="main-content">
+                <h2><?php echo $title; ?></h2>
+                <p>
+                    Поздравляем! Мы успешно получили Вашу заявку и обработаем ее в ближайшее время. <strong>Совсем скоро</strong> мы свяжемся с Вами!
+                </p>
+                
+                <h3>Спасибо!</h3>
+                
+                <p class="hint">
+                    Если Вы не получили ответа на Вашу заявку в течение 24 часов, пожалуйста напишите нам по адресу <a href="mailto:support@parcels.su">support@parcels.ru</a>
+                </p>
+            </div><!-- #main-content -->
+        <?php } else { ?>
+            <?php $title = 'Ошибка отправки запроса'?>
+            <?php breadcrumbs(); ?>
+            
+            <div id="main-content">
+                <h2><?php echo $title; ?></h2>
+                <p>
+                    К сожалению, при отправке запроса возникли проблемы:
+                </p>
+                <ul class="error">
+                <?php foreach ( $errors as $error ) { ?>
+                    <li><?php echo $error; ?></li>
+                <?php } ?>
+                </ul>
+                <p>
+                    Попробуйте еще раз:
+                </p>
+                <form id="request-form" class="new" action="/request" method="post">
+                    <div class="border border-right"></div>
+                    <div class="border border-top"></div>
+                    <div class="border border-left"></div>
+                    <div class="border border-bottom"></div>
+                    <div class="form-block">
+                        <h4 class="freight">Груз</h4>
+                        <?php request_form2('freight') ?>
+                    </div><!-- .form-block -->
+                    <div class="form-block">
+                        <h4 class="conditions">Условия доставки</h4>
+                        <?php request_form2('conditions') ?>
+                    </div><!-- .form-block -->
+                    <div class="form-block">
+                        <h4 class="contact-info">Контактная информация</h4>
+                        <?php request_form2('contact-info') ?>
+                    </div><!-- .form-block -->
+                    <input id="r-submit" class="button" type="submit" value="Отправить запрос" name="r-submit" />
+                </form>
+            </div><!-- #main-content -->
+        <?php } ?>
+    </div><!-- #content -->
+</div><!-- #container -->
+
+<?php include_once('footer.php'); ?>

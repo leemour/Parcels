@@ -1,0 +1,89 @@
+{% block footer %}
+    <div id="footer">
+        <div class="wide">
+            <div class="footer-column column-1">
+                <p>
+                    © {{ 'now'|date("Y") }} Parcels.su<br />
+                    {{ 'Международные перевозки'|trans }}
+                </p>
+                <p class="tel">
+                    (812) 320 40 20
+                </p>
+                <div class="contact-box">
+                    <a href="mailto:{{ email }}">{{ email }}</a>
+                </div>
+            </div>
+            <div class="footer-column column-2">
+                <ul>
+                    <li>
+                        <a href="{{ locale.uri }}/">{{ 'Главная'|trans }}</a></li>
+                    <li>
+                        <a href="{{ locale.uri }}/delivery">{{ 'Доставка посылок'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/payment">{{ 'Организация оплаты'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/geography">{{ 'География услуг'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/transport-types">{{ 'Виды перевозок'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/contacts">{{ 'Запросите нас'|trans }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-column column-3">
+                <ul>
+                    <li>
+                        <a href="{{ locale.uri }}/distribution#import">{{ 'Доставка по России'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/distribution#export">{{ 'Отправка из России'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/payment#receiver">{{ 'Доставка за счет получателя'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/customs">{{ 'Таможенное оформление'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/distribution">{{ 'Рассылка посылок'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/container">{{ 'Контейнерные перевозки'|trans }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ locale.uri }}/container#consolidation">{{ 'Сборные грузы'|trans }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-column column-4">
+                <a href="http://www.riabit.ru" class="author" title="Студия Рябит">
+                    <span class="underline">{{ 'Разработка сайта'|trans }}</span> -
+                </a>
+                <div class="rambler">
+                    <!-- begin of Top100 code -->
+                    <script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?2711830"></script>
+                    <noscript>
+                        <a href="http://top100.rambler.ru/navi/2711830/">
+                        <img src="http://counter.rambler.ru/top100.cnt?2711830" alt="Rambler's Top100" border="0" />
+                        </a>
+                    </noscript>
+                    <!-- end of Top100 code -->
+                </div>
+                <!--LiveInternet counter--><script type="text/javascript"><!--
+                    document.write("<a rel='nofollow' href='http://www.liveinternet.ru/click' "+
+                    "target=_blank><img class='liveinternet' src='//counter.yadro.ru/hit?t44.2;r"+
+                    escape(document.referrer)+((typeof(screen)=="undefined")?"":
+                    ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+                    screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+                    ";"+Math.random()+
+                    "' alt='' title='LiveInternet' "+
+                    "border='0' width='31' height='31'><\/a>")
+                //--></script><!--/LiveInternet-->
+            </div>
+        </div><!-- .wide-->
+    </div><!-- #footer-->
+{% endblock %}

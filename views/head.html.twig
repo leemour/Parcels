@@ -1,0 +1,62 @@
+{% block head %}
+    <head profile="http://gmpg.org/xfn/11">
+        {% if page.slug == '/' %}
+            {% set title = '' %}
+        {% else %}
+            {% set title = page.title %}
+        {% endif %}
+        <title>{{ title ? title|trans ~ ' - ': '' }}Parcels.su - {{ 'Международные перевозки, Доставка коммерческих посылок'| trans }}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-language" content="{{ app.locale }}" />
+        <meta name="description" content="{{ page.description|trans }}" />
+        <meta name="keywords" content="{{ page.keywords|trans }}" />
+        <meta name="author" content="riabit.ru" />
+        <link rel="stylesheet" href="/css{{ '/' ~ app.locale }}.css" type="text/css" media="screen" />
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon"  />
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"  />
+        <script src="/js/cufon-yui.js" type="text/javascript"></script>
+        <script src="/js/Play_700.font.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            Cufon.replace('.header-contacts .tel');
+            Cufon.replace('#navigation-main li a', {textShadow: '#12577e 1px 1px'});
+            Cufon.replace('#services li a', {hover: {color: '#AC1E25'}});
+            Cufon.replace('#services-widget li a', {hover: true});
+            Cufon.replace('h1');
+            Cufon.replace('h2');
+            Cufon.replace('h3', {hover: true});
+            Cufon.replace('#services-widget h3', {textShadow: '#12577e 1px 1px'});
+            Cufon.replace('#stages h3', {textShadow: '#5396af 1px 1px'});
+            Cufon.replace('#geography h4');
+        </script>
+        <!--[if IE 9]>
+            <style>
+                #features li a {
+                    opacity: 0.7;
+                }
+                #geography .continent {
+                    padding-right: 25px;
+                }
+                #main-content #request-form .form-block {
+                    padding-bottom: 12px;
+                }
+            </style>
+        <![endif]-->
+        <noscript>
+            <style type="text/css">
+                #navigation-main li a {
+                    font-weight: bold;
+                    height: 50px;
+                    line-height: 48px;
+                    padding: 0 13px;
+                }
+                #services .services-list li a span {
+                    font-weight: bold;
+                }
+                #services-widget li a {
+                    height: 24px;
+                    padding-top: 4px;
+                }
+            </style>
+        </noscript>
+    </head>
+{% endblock %}
